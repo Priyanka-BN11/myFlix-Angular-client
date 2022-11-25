@@ -27,16 +27,19 @@ export class UserRegistrationFormComponent {
   
   // This is the function responsible for sending the form inputs to the backend
   registerUser(): void {
-      this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
-    // Logic for a successful user registration goes here! (To be implemented)
+      console.log("User Data", this.userData)
+      this.fetchApiData.userRegistration(this.userData).subscribe(
+        (result) => {
+          console.log("Success", result)
+        // Logic for a successful user registration goes here! (To be implemented)
        this.dialogRef.close(); // This will close the modal on success!
-       console.log(result);
+       console.log("Login Success", result);
        this.snackBar.open(result, 'OK', {
           duration: 2000
        });
-      }, (result) => {
-        console.log(result);
-        this.snackBar.open(result, 'OK', {
+      }, (err) => {
+        console.log("Error while login", err)
+        this.snackBar.open(err, 'OK', {
           duration: 2000
         });
       });

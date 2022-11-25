@@ -29,8 +29,9 @@ export class UserLoginFormComponent implements OnInit{
           duration: 20,
         });
       },
-      (result) => {
-        this.snackBar.open(result, 'OK', {
+      (err) => {
+        console.log("Error while login", err)
+        this.snackBar.open(err, 'OK', {
           duration: 2000,
         });
       }
