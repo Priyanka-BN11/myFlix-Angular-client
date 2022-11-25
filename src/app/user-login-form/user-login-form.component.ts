@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog'; // Close dialog on success
 import { FetchApiDataService } from '../fetch-api-data.service'; // API
 import { MatSnackBar } from '@angular/material/snack-bar'; // Notifications
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -12,10 +14,13 @@ export class UserLoginFormComponent implements OnInit{
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  }
 
   // This is the function responsible for sending the form inputs to the backend
   loginUser(): void {
@@ -28,6 +33,8 @@ export class UserLoginFormComponent implements OnInit{
         this.snackBar.open(result, 'OK', {
           duration: 20,
         });
+        alert(1)
+        this.router.navigate(['movies'])
       },
       (err) => {
         console.log("Error while login", err)
