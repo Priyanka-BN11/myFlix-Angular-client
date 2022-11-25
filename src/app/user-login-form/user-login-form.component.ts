@@ -33,7 +33,7 @@ export class UserLoginFormComponent implements OnInit{
         this.snackBar.open(result, 'OK', {
           duration: 20,
         });
-        alert(1)
+        alert('Login successful');
         this.router.navigate(['movies'])
       },
       (err) => {

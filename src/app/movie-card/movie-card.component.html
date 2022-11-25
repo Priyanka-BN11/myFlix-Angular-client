@@ -1,0 +1,8 @@
+<!-- display all returned movies -->
+<!-- let movie of movies;, "movies" refers to the movies variable declared in the component file. -->
+<mat-card *ngFor="let movie of movies; let i=index;">
+    <mat-dialog-content>
+        <mat-card-title>{{movie.Title}}</mat-card-title>
+        <mat-card-subtitle><img src={{movie.ImagePath}}/></mat-card-subtitle>
+    </mat-dialog-content>
+</mat-card>
