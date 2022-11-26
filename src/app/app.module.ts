@@ -15,18 +15,28 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieCardComponent } from './movie-card/movie-card.component';
+import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 
+import { RouterModule, Routes } from '@angular/router';
+const appRoutes: Routes = [
+  // this route will point to the WelcomePageComponent
+  {path: 'welcome', component:WelcomePageComponent},
+  // this route will point to the MovieCardComponent
+  {path:'movies', component:MovieCardComponent},
+  // this empty route point to the welcome path by default
+  {path:'', redirectTo:'welcome',pathMatch:'prefix'},
+]
 @NgModule({
   declarations: [
     AppComponent,
     UserRegistrationFormComponent,
     UserLoginFormComponent,
-    MovieListComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    WelcomePageComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
